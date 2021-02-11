@@ -5,8 +5,8 @@
 #ifndef TP4BONUS_STRINGY_H
 #define TP4BONUS_STRINGY_H
 
-unsigned long long strlen_y(const char *str) {
-    long long i = 0;
+int strlen_y(const char *str) {
+    int i = 0;
     while (str[i] != '\0') {
         ++i;
     }
@@ -30,7 +30,21 @@ char *strcpy_y(char *restrict dest, const char *restrict src) {
         dest[i] = src[i];
         ++i;
     }
-    dest[i]=src[i]; //copies the '\0'
+    dest[i] = src[i]; //copies the '\0'
+    return dest;
+}
+
+char *strcat_y(char *restrict dest, const char *restrict src) {
+    int i = 0;
+    while (dest[i] != '\0') {
+        ++i;
+    }
+    int j = 0;
+    while (src[j] != '\0') {
+        dest[i] = src[j];
+        ++i;
+        ++j;
+    }
     return dest;
 }
 

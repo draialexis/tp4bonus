@@ -8,73 +8,86 @@ int main() {
     /*strlen clone*/
     char sentenceA[] = "Hallo, World!";
     char sentenceB[] = "Hello, World!";
-    float temps1;
+    float temps;
 
-    clock_t begin1 = clock();
+    clock_t begin = clock();
     for (int i = 0; i < 10000000; ++i) {
         strlen_y(sentenceA);
     }
-    clock_t end1 = clock();
-    temps1 = (float) (end1 - begin1) / CLOCKS_PER_SEC;
+    clock_t end = clock();
+    temps = (float) (end - begin) / CLOCKS_PER_SEC;
 
-    printf("strlen_y took %f seconds to iterate 10,000,000 times.\n", temps1);
+    printf("strlen_y took %f seconds to iterate 10,000,000 times.\n", temps);
     //////////////////////////////////////////////////////////////////////////////
-    float temps2;
-
-    clock_t begin2 = clock();
+    begin = clock();
     for (int i = 0; i < 10000000; ++i) {
         strlen(sentenceA);
     }
-    clock_t end2 = clock();
-    temps2 = (float) (end2 - begin2) / CLOCKS_PER_SEC;
+    end = clock();
+    temps = (float) (end - begin) / CLOCKS_PER_SEC;
 
-    printf("strlen took %f seconds to iterate 10,000,000 times.\n", temps2);
+    printf("strlen took %f seconds to iterate 10,000,000 times.\n", temps);
     //////////////////////////////////////////////////////////////////////////////
     /*strcmp clone*/
-    float temps3;
-
-    clock_t begin3 = clock();
+    begin = clock();
     for (int i = 0; i < 10000000; ++i) {
         strcmp_y(sentenceA, sentenceB);
     }
-    clock_t end3 = clock();
-    temps3 = (float) (end3 - begin3) / CLOCKS_PER_SEC;
+    end = clock();
+    temps = (float) (end - begin) / CLOCKS_PER_SEC;
 
-    printf("strcmp_y took %f seconds to iterate 10,000,000 times.\n", temps3);
+    printf("strcmp_y took %f seconds to iterate 10,000,000 times.\n", temps);
     //////////////////////////////////////////////////////////////////////////////
-    float temps4;
-    clock_t begin4 = clock();
+    begin = clock();
     for (int i = 0; i < 10000000; ++i) {
         strcmp(sentenceA, sentenceB);
     }
-    clock_t end4 = clock();
-    temps4 = (float) (end4 - begin4) / CLOCKS_PER_SEC;
+    end = clock();
+    temps = (float) (end - begin) / CLOCKS_PER_SEC;
 
-    printf("strcmp took %f seconds to iterate 10,000,000 times.\n", temps4);
+    printf("strcmp took %f seconds to iterate 10,000,000 times.\n", temps);
 
     //////////////////////////////////////////////////////////////////////////////
     /*strcpy clone*/
-    char sentenceEmpty[] = "what";
-    float temps5;
-
-    clock_t begin5 = clock();
+    char sentenceCpy[20] = "what";
+    begin = clock();
     for (int i = 0; i < 10000000; ++i) {
-        strcpy_y(sentenceEmpty, sentenceB);
+        strcpy_y(sentenceCpy, sentenceB);
     }
-    clock_t end5 = clock();
-    temps5 = (float) (end5 - begin5) / CLOCKS_PER_SEC;
+    end = clock();
+    temps = (float) (end - begin) / CLOCKS_PER_SEC;
 
-    printf("strcpy_y took %f seconds to iterate 10,000,000 times.\n", temps5);
+    printf("strcpy_y took %f seconds to iterate 10,000,000 times.\n", temps);
     //////////////////////////////////////////////////////////////////////////////
-    float temps6;
-
-    clock_t begin6 = clock();
+    begin = clock();
     for (int i = 0; i < 10000000; ++i) {
-        strcpy(sentenceEmpty, sentenceB);
+        strcpy(sentenceCpy, sentenceB);
     }
-    clock_t end6 = clock();
-    temps6 = (float) (end6 - begin6) / CLOCKS_PER_SEC;
+    end = clock();
+    temps = (float) (end - begin) / CLOCKS_PER_SEC;
 
-    printf("strcpy took %f seconds to iterate 10,000,000 times.\n", temps6);
+    printf("strcpy took %f seconds to iterate 10,000,000 times.\n", temps);
+    //////////////////////////////////////////////////////////////////////////////
+    /*strcat clone*/
+    char sentenceCat1[10000] = "_";
+    char sentenceCat2[10000] = "-";
+    begin = clock();
+    for (int i = 0; i < 9999; ++i) {
+        strcat_y(sentenceCat1, sentenceCat2);
+    }
+    end = clock();
+    temps = (float) (end - begin) / CLOCKS_PER_SEC;
+
+    printf("strcat_y took %f seconds to iterate 9999 times.\n", temps);
+    //////////////////////////////////////////////////////////////////////////////
+    char sentenceCat3[10000] = "_";
+    begin = clock();
+    for (int i = 0; i < 9999; ++i) {
+        strcat(sentenceCat3, sentenceCat2);
+    }
+    end = clock();
+    temps = (float) (end - begin) / CLOCKS_PER_SEC;
+
+    printf("strcat took %f seconds to iterate 9999 times.\n", temps);
     return 0;
 }
